@@ -1,0 +1,27 @@
+This directory contains the source files for the program CHAMBER.
+This code converts charmm psf files into AMBER prmtop files allowing
+the use of the CHARMM force field in AMBER.
+
+Authors = Mike Crowley (NREL), Mark Williamson (SDSC), Ross Walker (SDSC)
+
+chamber ---- executable for creating amber input files from charmm input files
+
+   INPUT ARGUMENTS:                                 defaults
+       -param <input charmm parameter file name>     par_all27_prot_na.prm
+       -top   <input charmm topology file name>      top_all27_prot_na.rtf
+       -psf   <input charmm psf file name>           psf.psf
+       -crd   <input charmm coords file name>        chmpdb.pdb
+              This can be a pdb, crd or rst file - format is auto detected.
+       -p     <output amber prmtop file name>        prmtop
+       -inpcrd <output amber inpcrd file name>       inpcrd
+
+main.f ------ driver for chamber
+
+psfprm.f ----- reads psf and paramaters translates to amber data structure
+
+write_prmtop.f ---- writes the prmtop from the data structures
+
+mkexcl.f --------- creates exclusion list
+
+sort.f ----------- generic sort routine
+

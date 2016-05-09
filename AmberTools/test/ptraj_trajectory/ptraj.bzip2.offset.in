@@ -1,0 +1,5 @@
+trajin rem.crd.000.bz2 1 10 2 
+trajin rem.crd.001.bz2 2 10 3
+trajin rem.crd.002.bz2 3 8 2
+trajin rem.crd.003.bz2 1 10 5
+trajout bzip2.rem.crd.combined remdtraj

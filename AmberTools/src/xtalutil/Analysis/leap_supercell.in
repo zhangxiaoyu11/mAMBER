@@ -1,0 +1,6 @@
+source leaprc.ff12SB
+set default nocenter on
+x = loadpdb supercell.pdb
+set x box {77.86   79.26   66.60}
+saveamberparm x supercell.parm7 supercell.rst7
+quit

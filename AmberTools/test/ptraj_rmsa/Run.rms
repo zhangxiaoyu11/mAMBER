@@ -1,0 +1,16 @@
+#! /bin/csh -f
+
+if( ! $?TESTptraj ) set TESTptraj = "../../bin/ptraj"
+
+$TESTptraj prmtop ptraj.in >&  ptraj.out || goto error
+
+../dacdif rms.dat.save rms.dat
+#/bin/rm -f ptraj.out
+
+exit(0)
+
+error:
+echo "  ${0}:  Program error"
+echo " "
+exit(1)
+

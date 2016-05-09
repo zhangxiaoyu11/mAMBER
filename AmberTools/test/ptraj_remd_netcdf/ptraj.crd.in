@@ -1,0 +1,3 @@
+trajin rem.crd.000 remdtraj remdtrajtemp 492.2
+distance d1 out dist.crd.dat @1 @21
+go

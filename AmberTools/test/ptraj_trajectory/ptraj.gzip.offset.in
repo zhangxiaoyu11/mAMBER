@@ -1,0 +1,5 @@
+trajin rem.crd.000.gz 1 10 2 
+trajin rem.crd.001.gz 2 10 3
+trajin rem.crd.002.gz 3 8 2
+trajin rem.crd.003.gz 1 10 5
+trajout gzip.rem.crd.combined remdtraj

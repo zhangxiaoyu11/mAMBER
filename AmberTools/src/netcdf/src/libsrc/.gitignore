@@ -1,0 +1,3 @@
+# do not track generated files
+ncx.c
+netcdf.3

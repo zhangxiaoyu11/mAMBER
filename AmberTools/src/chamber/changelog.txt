@@ -1,0 +1,5 @@
+AT 1.6
+	MFC: Support for the Xplor file format.
+	MJW: Support for writing a VMD viewable prmtop file.
+	MJW: Fix comment typo:
+		K_ub: kcal/mole/rad**2 --> K_ub: kcal/mole/A**2

@@ -1,0 +1,82 @@
+#
+#   Please do not edit the "depend" file directly, since it is created by the
+#   "makedepend" script.  If changes are needed, edit "makedepend" itself.
+#
+cmap.o: \
+                    copyright.h
+
+
+cmap.o:   cmap.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ cmap.F90
+
+gbradii.o: \
+                    copyright.h\
+                    psfprm.o\
+                    molnt.o
+
+
+gbradii.o:   gbradii.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ gbradii.F90
+
+main.o: \
+                    copyright.h\
+                    psfprm.o\
+                    write_prmtop.o\
+                    molnt.o
+
+
+main.o:   main.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ main.F90
+
+mkexcl.o: \
+                    copyright.h\
+                    sort.o\
+                    psfprm.o
+
+
+mkexcl.o:   mkexcl.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ mkexcl.F90
+
+molnt.o: \
+                    copyright.h\
+                    psfprm.o
+
+
+molnt.o:   molnt.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ molnt.F90
+
+psf_strings.o: \
+                    copyright.h
+
+
+psf_strings.o:   psf_strings.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ psf_strings.F90
+
+psfprm.o: \
+                    copyright.h\
+                    psf_strings.o\
+                    cmap.o
+
+
+psfprm.o:   psfprm.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ psfprm.F90
+
+sort.o: \
+                    copyright.h\
+                    psfprm.o
+
+
+sort.o:   sort.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ sort.F90
+
+write_prmtop.o: \
+                    copyright.h\
+                    psfprm.o\
+                    cmap.o\
+                    molnt.o\
+                    psf_strings.o
+
+
+write_prmtop.o:   write_prmtop.F90
+	$(FC) $(FPPFLAGS) -c $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ write_prmtop.F90
+

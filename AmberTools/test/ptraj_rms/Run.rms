@@ -1,0 +1,23 @@
+#! /bin/csh -f
+
+echo " "
+echo "ptraj: test rms and 2drms commands"
+
+if( ! $?TESTptraj ) set TESTptraj = "../../bin/ptraj"
+
+$TESTptraj pep3.top ptraj.in >&  ptraj.out || goto error
+
+../dacdif rms_fit.dat.save rms_fit.dat
+../dacdif rms_nofit.dat.save rms_nofit.dat
+# 2drms produces postscript output with scaled rmsd values
+# inside, so it should suffice to compare ps files
+../dacdif rms2d.ps.save rms2d.ps
+/bin/rm -f rms_fit.dat rms_nofit.dat rms2d.ps ptraj.out
+
+exit(0)
+
+error:
+echo "  ${0}:  Program error"
+echo " "
+exit(1)
+

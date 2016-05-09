@@ -1,0 +1,147 @@
+Read in control variables
+Read in atom names...
+Read in charges...
+Read in masses...
+Read in IAC (atoms involved in L-J)...
+Read in NUMEX (index to excl atom list)...
+Read in NNO (index for nonbond of @type)...
+Read in residue labels...
+Read in the residue to atom pointer list...
+Read in bond parameters RK and REQ...
+Read in angle parameters TK and TEQ...
+Read in dihedral parameters PK, PN and PHASE...
+Read in SOLTY...
+Read in L-J parameters CN1 and CN2...
+Read in info for bonds w/ hydrogen...
+Read in info for bonds w/out hydrogen...
+Read in info for angles w/ hydrogen...
+Read in info for angles w/out hydrogen...
+Read in info for dihedrals w/ hydrogen...
+Read in info for dihedrals w/out hydrogen...
+Read in excluded atom list...
+Read in h-bond parameters: AG, BG, and HBCUT...
+Read in atomic symbols (types)...
+Read in tree information...
+Read in the JOIN info...
+Read in the IROTAT info...
+Checking coordinates: 1rrb_vac.mdcrd
+
+Amber8 Module: ptraj 
+
+ ASN  THR  ILE  ARG  VAL  PHE  LEU  PRO  ASN  LYS 
+ GLN  ARG  THR  VAL  VAL  ASN  VAL  ARG  ASN  GLY 
+ MET  SER  LEU  HIP  ASP  CYS  LEU  MET  LYS  ALA 
+ LEU  LYS  VAL  ARG  GLY  LEU  GLN  PRO  GLU  CYS 
+ CYS  ALA  VAL  PHE  ARG  LEU  LEU  HID  GLU  HIP 
+ LYS  GLY  LYS  LYS  ALA  ARG  LEU  ASP  TRP  ASN 
+ THR  ASP  ALA  ALA  SER  LEU  ILE  GLY  GLU  GLU 
+ LEU  GLN  VAL  ASP  PHE  LEU 
+Successfully completed readParm.
+
+PTRAJ: Processing input file...
+       Input is from file ptraj.in
+
+PTRAJ: trajin 1rrb_vac.mdcrd
+
+PTRAJ: matrix dist @CA out 1rrb_vac_distmat.dat
+Mask [@CA] represents 76 atoms
+
+PTRAJ: matrix mwcovar name 1rrb_vac_mwcovarmat out 1rrb_vac_mwcovarmat.dat
+Mask [*] represents 1241 atoms
+
+PTRAJ: analyze matrix 1rrb_vac_mwcovarmat out 1rrb_vac_mwcovarmat_evecs.dat vecs 5 thermo
+
+PTRAJ: matrix distcovar :1-76@CA name 1rrb_vac_distcovarmat out 1rrb_vac_distcovarmat.dat
+Mask [:1-76@CA] represents 76 atoms
+
+PTRAJ: analyze matrix 1rrb_vac_distcovarmat out 1rrb_vac_distcovarmat_evecs.dat vecs 5 reduce
+FYI: No output trajectory specified (trajout), none will be saved.
+
+PTRAJ: Successfully read the input file.
+       Coordinate processing will occur on 10 frames.
+       Summary of I/O and actions follows:
+
+INPUT COORDINATE FILES
+  File (1rrb_vac.mdcrd) is an AMBER trajectory with 10 sets
+
+OUTPUT COORDINATE FILE
+  NULL entry
+
+ACTIONS
+  1>  MATRIX: Calculating distance matrix by atom, dumping to file 1rrb_vac_distmat.dat, using no mass weighting
+      Atom selection 1 follows :1-76@CA
+  7>  MATRIX: Calculating mass weighted covar matrix by atom, dumping to file 1rrb_vac_mwcovarmat.dat, using no mass weighting
+      Storing matrix on internal stack with name: 1rrb_vac_mwcovarmat
+      Atom selection 1 follows   * (All atoms are selected)
+  7>  MATRIX: Calculating distance covar matrix by atom, dumping to file 1rrb_vac_distcovarmat.dat, using no mass weighting
+      Storing matrix on internal stack with name: 1rrb_vac_distcovarmat
+      Atom selection 1 follows :1-76@CA
+
+
+ANALYZE
+  1>  ANALYZE MATRIX: Analyzing matrix 1rrb_vac_mwcovarmat and dumping results to 1rrb_vac_mwcovarmat_evecs.dat
+      Calculating 5 eigenvectors and thermodynamic data
+  2>  ANALYZE MATRIX: Analyzing matrix 1rrb_vac_distcovarmat and dumping results to 1rrb_vac_distcovarmat_evecs.dat
+      Calculating 5 eigenvectors and no thermodynamic data
+      Eigenvectors will be reduced
+
+
+Processing AMBER trajectory file 1rrb_vac.mdcrd
+
+Set      1 ..........
+ERROR in readAmberTrajectory(): Set #11 is corrupted (
+)...
+
+
+                    *******************
+                    - Thermochemistry -
+                    *******************
+
+
+
+ temperature   298.150 kelvin
+ pressure      1.00000 atm
+ molecular mass (principal isotopes)  8693.33400 amu
+
+ principal moments of inertia (nuclei only) in amu-A**2:
+         649815.28   852341.98   971342.29
+
+ rotational symmetry number  1.
+
+ Warning-- assumption of classical behavior for rotation
+           may cause significant error
+
+
+ rotational temperatures (kelvin)      0.00004     0.00003     0.00002
+
+ zero point vibrational energy        222.3 (joules/mol) 
+                                    0.05309 (kcal/mol)
+                                  0.0000847 (hartree/particle)
+
+ Warning--   5 vibrations have low frequencies and may represent hindered 
+         internal rotations.  The contributions printed below assume that these 
+         really are vibrations.
+
+
+           freq.         E                  Cv                 S
+          cm**-1      kcal/mol        cal/mol-kelvin    cal/mol-kelvin
+--------------------------------------------------------------------------------
+ Total                    4.737             15.886            148.773
+ translational            0.888              2.979             52.992
+ rotational               0.888              2.979             52.127
+ vibrational              2.961              9.928             43.654
+     1     3.749          0.592              1.986              9.952
+     2     5.534          0.592              1.986              9.179
+     3     7.506          0.592              1.986              8.574
+     4     9.560          0.592              1.986              8.094
+     5    10.783          0.592              1.985              7.855
+
+
+PTRAJ: Successfully read in 10 sets and processed 10 sets.
+       Dumping accumulated results (if any)
+
+PTRAJ MATRIX: Dumping matrix values
+PTRAJ MATRIX: Dumping matrix values
+PTRAJ MATRIX: Dumping matrix values
+
+PTRAJ: Analyzing accumulated data

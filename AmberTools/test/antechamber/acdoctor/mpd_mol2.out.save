@@ -1,0 +1,37 @@
+
+
+[34m-- Check Format for mol2 File --[0m
+
+
+[32m-- Status: pass --[0m
+
+
+[34m-- Check Unusual Elements --[0m
+
+
+[32m-- Status: pass --[0m
+
+
+[34m-- Check Open Valences --[0m
+[33mWarning: the number of bonded atoms (0) for atom (ID: 22, Name: HD) does not match
+[0m[33m         the desired connectivity (1) based on the atom type (H) defined in CORR_NAME_TYPE.DAT.
+[0m[33mWarning: the number of bonded atoms (0) for atom (ID: 22, Name: HD) does not match
+[0m[33m         the desired connectivity (1) based on the atom type (H) defined in CORR_NAME_TYPE.DAT.
+[0m[32mBUT, You may safely ingnor the warnings if your input molecule uses atom names or element as atom types
+[0m
+
+[34m-- Check Geometry --[0m
+
+
+[34m-- For those bonded --[0m
+
+
+[34m-- For those unbonded --[0m
+
+
+[32m-- Status: pass --[0m
+
+
+[34m-- check weird bonds --[0m
+[31mError: weird atomic valence (3) for atom (ID: 1, Name: CD), possible have open valence
+[0m

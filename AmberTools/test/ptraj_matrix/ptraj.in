@@ -1,0 +1,30 @@
+#
+# Example of "matrix" functionality in ptraj 
+#   (Please note - the trajectory was aligned against
+#    a reference structure before; otherwise use the
+#    "rms" command to obtain meaningful results)
+#
+trajin 1rrb_vac.mdcrd
+
+#
+# Generate distance matrix of all CA atoms
+#
+matrix dist @CA out 1rrb_vac_distmat.dat
+
+#
+# Generate mass-weighted covariance matrix of all atoms,
+#   which is stored internally, and subsequently 
+#   analyzed (i.e. in total a quasiharmonic analysis is 
+#   performed)
+#
+matrix mwcovar name 1rrb_vac_mwcovarmat out 1rrb_vac_mwcovarmat.dat
+analyze matrix 1rrb_vac_mwcovarmat out 1rrb_vac_mwcovarmat_evecs.dat vecs 5 thermo
+
+#
+# Generate distance-covariance matrix of CA atoms,
+#   which is stored internally, and subsequently analyzed
+#   (i.e. a PCA in distance space is performed).
+#   Eigenvectors are then reduced.
+#
+matrix distcovar :1-76@CA name 1rrb_vac_distcovarmat out 1rrb_vac_distcovarmat.dat
+analyze matrix 1rrb_vac_distcovarmat out 1rrb_vac_distcovarmat_evecs.dat vecs 5 reduce

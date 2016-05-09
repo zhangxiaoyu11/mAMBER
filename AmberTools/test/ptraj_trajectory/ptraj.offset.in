@@ -1,0 +1,5 @@
+trajin rem.crd.000 1 10 2 
+trajin rem.crd.001 2 10 3
+trajin rem.crd.002 3 8 2
+trajin rem.crd.003 1 10 5
+trajout rem.crd.combined remdtraj

@@ -1,0 +1,51 @@
+In-progress set of scripts to do basic crystal analysis.
+
+In principle, the FullAnalysis.sh script will do everything, but here is a
+brief description (as of Dec. 2012) of how to proceed:
+
+Naming scheme:
+    asu.pdb -- has crystallographic non-solvent coords and SYMMETRY/CRYSTL1 
+    asu.parm7, asu.rst7 -- leap output for non-solvent asymmetric unit
+    unit.pdb -- output from step 6 below
+    supercell.pdb -- (multi)-unit pdb file
+    supercell.parm7, supercell.rst7 -- supercell leap output, from step 8
+
+First, prepare the asymmetric unit files:
+
+1. copy the non-solvent coords <crystal>.pdb to asu_nowat.pdb
+   [Note: the coordinates in this file must match those in the original PDB]
+2. tleap -f leap_asu.in
+4. ambpdb -p asu.parm7 < asu.rst7 > asu.pdb
+5. edit asu.pdb to insert REMARK 290 and CRYST1 lines from <crystal>.pdb
+
+Next, create a prmtop file for the supercell (for now, with no solvent):
+
+6. UnitCell -p asu.pdb -o unit.pdb
+7. prop.sh
+8. tleap -f leap_supercell.in
+   [Alternative: use ParmEd or cpptraj to strip waters,ions from the full
+    prmtop file used for the simulation]
+
+Now, carry out the analysis:
+
+9. strip and combine original trajectory files: these will corrspond to
+      supercell.parm7
+10. cpptraj < ptraj.fit.in  (does translate fit on supercell)
+11. mkdir split; cd split; ../Splittrajectory.py; cd ..
+12. mkdir revsym; cd revsym; ../RevSym_netcdf.py
+13. In revsym:  ../analyse_revsym.py
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+
+Average simulation density calculation
+
+Creating the Average Simulation Density
+
+Follow these four steps after editing setup variables in each script.
+1. NoStripMerge.sh - create a trajectory that is mass centered on the original crystal supercell. Here I kept all waters (no stripping) but maybe this is not necessary. Not sure yet how all that bulk solvent will look in the average density. What I do know already, is that it does not distort the best alignment of the densities (with and without water, the best alignment is the same as the protein center of mass alignment). The offset variable will control the selection of pdb frames.
+
+2. MakePdb4Map.py - convert trajectory into pdbs that will be used for the average. This is not trivial because the you need to add the corrrect cell parameters, remove virtual atoms, make sure element type column is correct.
+
+3. (optional) Prepare solvpep1.pdb - this is the experimental map that you will be aligning against. Well, this is not strictly necessary because the center of mass alignment results in optimal shifts of (0 0 0), ie no need to align if mass centered. But in case you want to make sure, this experimental map pdb needs to be similar to the pdb's from step two above: occupancy set to 1, column 78 filled, remove virtual atoms, add CRYST1 record...
+
+4. Run md2map.sh

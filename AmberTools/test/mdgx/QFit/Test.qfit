@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Check the existence of a test version of the mdgx program
+MDGX="${AMBERHOME}/bin/mdgx"
+if [ -n "${TESTmdgx}" ] ; then
+  MDGX=${TESTmdgx}
+  echo "MDGX set to ${MDGX}"
+fi
+
+# Write a charge fitting input file
+cat > fit.in << EOF
+&files
+  -p     vALADi.top
+  -o     fit.out
+&end
+
+&fit
+  phi1  ala1.cube   -p1 vALADi.top
+  phi2  ala2.cube   -p2 vALADi.top
+  phi3  glu1.cube   -p3 vGLUDi.top
+  phi4  glu2.cube   -p4 vGLUDi.top
+  phi5  thr1.cube   -p5 vTHRDi.top
+  phi6  thr2.cube   -p6 vTHRDi.top
+  pnrg          0.0
+  flim          0.39
+  nfpt          100
+  equalq1       '(!:ACE,NME) & @O'
+  equalq2       '(!:ACE,NME) & @N'
+  equalq3       '(!:ACE,NME) & @C'
+  equalq4       '(!:ACE,NME) & @H'
+  equalq5       ':ACE & @HH31,HH32,HH33'
+  equalq6       ':ACE & @CH3'
+  equalq7       ':ACE & @C'
+  equalq8       ':ACE & @O'
+  equalq9       ':NME & @HH31,HH32,HH33'
+  equalq10      ':NME & @CH3'
+  equalq11      ':NME & @N'
+  equalq12      ':NME & @H'
+  equalq13      ':ALA & @HB1,HB2,HB3'
+  equalq14      ':GLU & @HB2,HB3'
+  equalq15      ':GLU & @HG2,HG3'
+  equalq16      ':GLU & @OE1,OE2'
+  equalq17      ':THR & @HG11,HG12,HG13'
+  minq1         ':NME & @CH3'
+  minq2         ':ACE & @CH3'
+  minq3         '@CB'
+  minqwt        1.0e-2
+  sumq1         ':NME'
+  sumq2         ':ACE'
+  groupqtot1    0.0
+  groupqtot2    0.0
+  CFExtension   pdb
+  hist          fqpt.dat
+  Verbose       0
+&end
+EOF
+
+# Run the mdgx program
+${MDGX} -O -i fit.in
+
+# Analyze the relevant output
+grep "^ HH31" fit.out > hydrogenQ.dat
+
+${AMBERHOME}/AmberTools/test/dacdif hydrogenQ.dat.save hydrogenQ.dat
+${AMBERHOME}/AmberTools/test/dacdif fqpt.dat.save fqpt.dat
+/bin/rm -f fit.in fit.out *.pdb hist.dat

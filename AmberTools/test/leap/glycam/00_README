@@ -1,0 +1,61 @@
+README for the GLYCAM tleap tests
+    20120319 BLFoley
+
+************************************
+Usage overview
+************************************
+
+Tests should be run with:
+
+	./Run_tests.bash
+
+If desired, the directories can be freshened with:
+
+	./Run_tests.bash clean
+
+************************************
+Testing overview
+************************************
+
+Each subdirectory in this directory represents a parameter set.
+As of the time of this writing, they are
+
+
+	06EPb 		The GLYCAM parameter set with extra points (lone pairs)
+	06h 		The standard GLYCAM parameter set
+
+Each  of those directories contains the following directories and contents:
+
+	LEAPIN		Directory containing leap input scripts used to
+			generate the output files to be tested.
+
+	save.CRD	Directory containing "standard" files for comparison.
+
+	save.TOP	Directory containing "standard" files for comparison.
+
+Testing workflow:
+
+Tests will take place in each of the parameter set directories.
+Each test involves the following:
+
+1.  PRMTOP and INPCRD directories will be generated if needed and cleaned if already present.
+2.  All files in LEAPIN will be run as input to tleap.  Their output will go into
+    the directories PRMTOP and INPCRD.
+3.  There should be a one-to-one match between files in save.TOP and PRMTOP and
+    between save.CRD and INPCRD.  The dacdif scrip will be run on each to test this.
+4.  After successful tests, all files and directories generated during the test are removed.
+5.  If a test is not successful, a small number of files and directories will be left so
+    that the user might determine the cause.
+
+************************************
+The leap input files
+************************************
+
+Each of the tests herein builds a number of structures at once.  To save on testing time,
+the various structures are built into a single prmtop/inpcrd set.  They are translated away
+from each other to facilitate visualization.  The comments in the leap input files should
+be reasonably explanatory to someone familiar with leap.
+
+Note that in many cases the structures built contain clashes.  These are meant only as tests
+of the software in their current state.  However, users can alter various torsions to produce
+usable files.  See the "Aglycons.leapin" in 06h for examples of torsion setting.

@@ -1,0 +1,30 @@
+#! /bin/csh -f
+
+if( ! $?TESTptraj ) set TESTptraj = "../../bin/ptraj"
+
+echo " "
+echo "ptraj: Test processing of REMD trajectories."
+
+$TESTptraj ala2.99sb.mbondi2.parm7 ptraj.crd.in >& ptraj.out || goto error
+../dacdif dist.crd.dat.save dist.crd.dat
+/bin/rm -f ptraj.out
+
+# Makefile passes in value of NETCDF
+echo "ptraj: Test processing of NetCDF REMD trajectories."
+if ( "$1" == "" ) then
+    echo "ptraj was not built with NetCDF support - skipping this test."
+    echo " "
+    exit(0)
+endif
+
+$TESTptraj ala2.99sb.mbondi2.parm7 ptraj.in >&  ptraj.out || goto error
+../dacdif dist.dat.save dist.dat
+/bin/rm -f ptraj.out
+
+exit(0)
+
+error:
+echo "  ${0}:  Program error"
+echo " "
+exit(1)
+

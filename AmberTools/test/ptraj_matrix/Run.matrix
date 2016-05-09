@@ -1,0 +1,23 @@
+#! /bin/csh -f
+
+echo " "
+echo "ptraj: analyze fluctuation matrices"
+
+if( ! $?TESTptraj ) set TESTptraj = "../../bin/ptraj"
+
+$TESTptraj 1rrb_vac.prmtop ptraj.in >&  ptraj.out || goto error
+
+../dacdif -r 1.e-5 1rrb_vac_distmat.dat.save 1rrb_vac_distmat.dat
+
+#  following not expected to PASS, since the sign of the eigenvector is
+#  arbitrary:
+# ../dacdif -r 2.e-5 1rrb_vac_mwcovarmat_evecs.dat.save 1rrb_vac_mwcovarmat_evecs.dat
+# ../dacdif -r 1.e-5 1rrb_vac_distcovarmat_evecs.dat.save 1rrb_vac_distcovarmat_evecs.dat
+/bin/rm -f 1rrb_vac_mwcovarmat.dat 1rrb_vac_mwcovarmat_evecs.dat 1rrb_vac_distcovarmat_evecs.dat 
+
+exit(0)
+
+error:
+echo "  ${0}:  Program error"
+echo " "
+exit(1)

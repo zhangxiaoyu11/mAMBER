@@ -1,0 +1,73 @@
+Reading parm file (Na+.parm7)
+title:
+                                                                                
+	mm_options:  e_debug=0
+	mm_options:  ntpr=1
+	mm_options:  ntpr_md=1
+	mm_options:  cut=999.0
+	mm_options:  dt=0.001
+	mm_options:  rattle=0
+	mm_options:  tempi=0
+	mm_options:  zerov=0
+	mm_options:  rism=1
+	mm_options:  apply_rism_force=0
+	mm_options:  buffer=12
+	mm_options:  solvcut=999
+	mm_options:  asympCorr=0
+	mm_options:  progress=1
+	mm_options:  xvvfile=spc-nacl.xvv
+      iter    Total       bad      vdW     elect   nonpolar   genBorn      frms
+ff:     0    -70.08      0.00      0.00      0.00      0.00    -70.08  0.00e+00
+md returns 0
+
+|Timing summary:
+|              Initialize       0.180
+|             Molec. Dyn.       3.106
+|             Normal Mode       0.000
+|             Conj. Grad.       0.000
+|                  Newton       0.000
+|-------------------------
+|                   Total       3.286
+
+|Molecular Dynamics Timing Summary:
+|          1st Derivative       3.106
+|                     I/O       0.000
+|                   Other       0.000
+|-------------------------
+|                   Total       3.106
+
+|1st derivative timing summary:
+|             constraints       0.000
+|                   bonds       0.000
+|                  angles       0.000
+|                torsions       0.000
+|                pairlist       0.000
+|                 nonbond       0.000
+|               gen. Born       0.000
+|       Poisson Boltzmann       0.000
+|                 3D-RISM       3.106
+|                   Other       0.000
+|-------------------------
+|                   Total       3.106
+
+|CPU Timer summary for 3D-RISM Total        
+|  3D-RISM initialization                           0.180   (  5.49%)
+|      Solvation box resize                             0.296   (  9.55%)
+|      Cuv propagation                                  0.004   (  0.13%)
+|          FFT                                              0.820   ( 29.88%)
+|            Overlap                                          0.188   ( 30.13%)
+|            Project                                          0.436   ( 69.87%)
+|          MDIIS Advance                                    0.624   ( 22.74%)
+|          Other                                            1.300   ( 47.38%)
+|        R1RISM                                           2.744   ( 99.85%)
+|        Other                                            0.004   (  0.15%)
+|      RXRISM                                           2.748   ( 88.65%)
+|        Lennard-Jones                                    0.004   (  7.69%)
+|        Coulomb                                          0.008   ( 15.38%)
+|        Asymptotics                                      0.040   ( 76.92%)
+|      Potential                                        0.052   (  1.68%)
+|    Solve 3D-RISM                                    3.100   ( 99.87%)
+|    Other                                            0.004   (  0.13%)
+|  3D-RISM                                          3.104   ( 94.63%)
+|3D-RISM Total                                    3.280   (100.00%)
+

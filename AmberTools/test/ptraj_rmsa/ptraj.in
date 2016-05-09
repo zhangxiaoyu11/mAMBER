@@ -1,0 +1,7 @@
+trajin eq1.x
+trajin eq2.x
+trajin eq3.x
+reference eq0.x
+strip :WAT
+rms reference out rms.dat :1-84@C,N,CA
+go

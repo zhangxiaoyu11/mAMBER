@@ -1,0 +1,50 @@
+
+                *****************************************************
+                * AMBER Bond Angle and Dihedral Parameter Optimiser *
+                *                                                   *
+                *                      v3.0.0                       *
+                *                                                   *
+                *                    Written by:                    *
+                *                 Robin Betz (2011)                 *
+                *                 Ross Walker (2004)                *
+                *          The Walker Molecular Dynamics Lab        *
+                *         University of California, San Diego       *
+                *            La Jolla, California, 92092            *
+                *                       USA                         *
+                *****************************************************
+
+*************************************************************************************
+                                Execution started at:
+|                             Tue Feb 28 12:13:03 2012
+
+|
+| Random seed = 1330459983
+ Reading job control file: Job_Control.in
+!  WARNING - 5 STRUCTURES IS PROBABLY TOO SMALL FOR AN ACCURATE FIT
+ Job Control: Read a total of 14 lines from job_control file. 8 options set.
+
+ Reading prmtop file: mdcrd_calc/NMA.prmtop
+ Reading mdcrd file: mdcrd_calc/mdcrd
+        ---------------------------------------------------------------------
+        |                          OPTIONS SUMMARY                         |
+        |                          ---------------                          |
+        | Summary of Run Type Options:                                      |
+        |              Mode = CREATE_INPUT,                                 |
+        |       File format = GAUSSIAN, Structures to write = 5             |
+        |   Filename format = Job.%d.gjf                                    |
+        |                                                                   |
+        | Summary of structural info:                                       |
+        |    QMCHARGE = 0    MULTIPLICITY = 1                               |
+        |      NATOMS = 12     NATOMTYPES = 7       AMBERCHARGE = 0.0000    |
+        |      NBONDS = 11        NANGLES = 18       NDIHEDRALS = 24        |
+        |  NBONDTYPES = 7     NANGLETYPES = 10   NDIHEDRALTYPES = 7         |
+        |                                                                   |
+        | Estimate Memory Usage (per cpu):                                  |
+        |  Coordinate info will be read from disk as required.              |
+        |                OPTION STORAGE = 408 bytes                         |
+        |                PRMTOP STORAGE = 3313 bytes                        |
+        |            COORDINATE STORAGE = 1440 bytes                        |
+        |  TOTAL ESTIMATED MEMORY USAGE = 5161 bytes                        |
+        |                                                                   |
+        ---------------------------------------------------------------------
+

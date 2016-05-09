@@ -1,0 +1,13 @@
+#!/bin/csh -f
+
+foreach bc ( 5 6 10 )
+foreach solv ( 1 2 3 4 5 )
+if ( ($bc == 6) && ($solv == 2) ) then
+   continue
+endif
+if ( ($bc == 10) && ($solv != 5) ) then
+   continue
+endif
+mv mdout.min_bc${bc}_solv${solv} out.save/mdout.min_bc${bc}_solv${solv}.save
+end
+end

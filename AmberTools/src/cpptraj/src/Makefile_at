@@ -1,0 +1,74 @@
+include ../../config.h
+
+CPPTRAJ_FLAGS=-I$(INCDIR) $(COPTFLAGS) $(CFLAGS) $(NETCDFINC)
+# The EXTERNAL_LIBS line is used for triggering dependencies. It contains the
+# actual locations of the arpack, lapack, blas, and netcdf libraries as 
+# installed by AmberTools. Since the NETCDFLIB / FLIBS_PTRAJ vars can now just
+# containe -lnetcdf / -larpack etc this avoids triggering an unnecessary build 
+# of these libraries each time 'make' is invoked.
+# NOTE: Since -nobintraj is possible and the dependency for netcdf is not
+#       set correctly by configure there is no way this can work for netcdf
+READLINE_HOME=readline
+READLINE=$(READLINE_HOME)/libreadline.a
+EXTERNAL_LIBS=$(LIBDIR)/libarpack.a $(LIBDIR)/liblapack.a $(LIBDIR)/libblas.a $(READLINE)
+
+include cpptrajfiles
+
+OBJECTS=$(SOURCES:.cpp=.o) $(CSOURCES:.c=.o)
+
+all: cpptraj$(SFX)
+
+install: cpptraj$(SFX) 
+	mv cpptraj$(SFX) $(BINDIR)/ 
+
+findDepend: FindDepend.o
+	$(CXX) -Wall -o findDepend FindDepend.o
+
+depend: findDepend
+	./findDepend $(SOURCES) $(CSOURCES) > cpptrajdepend
+
+dependclean:
+	-/bin/rm FindDepend.o
+	-/bin/rm findDepend
+
+cpptraj$(SFX): $(NETCDF) $(OBJECTS) pub_fft.o $(EXTERNAL_LIBS) 
+	$(CXX) $(LDFLAGS) -o cpptraj$(SFX) $(OBJECTS) pub_fft.o \
+               -L$(LIBDIR) $(NETCDFLIB) $(ZLIB) $(BZLIB) $(FLIBS_PTRAJ) $(READLINE)
+
+$(INCDIR)/netcdf.mod: ../../netcdf_config.log
+	cd ../../netcdf/src && $(MAKE) install
+
+$(LIBDIR)/libarpack.a:
+	cd ../../arpack && $(MAKE) install
+
+$(LIBDIR)/liblapack.a:
+	cd ../../lapack && $(MAKE) $(LAPACK)
+
+$(LIBDIR)/libblas.a:
+	cd ../../blas && $(MAKE) $(BLAS)
+
+$(READLINE):
+	cd $(READLINE_HOME) && $(MAKE) -f Makefile_at 
+
+pub_fft.o:  pub_fft.F90
+	$(FC) $(FPPFLAGS) -c $(FREEFORMAT_FLAG) $(FOPTFLAGS) $(FFLAGS) $(AMBERFFLAGS) -o $@ pub_fft.F90
+
+ReadLine.o: ReadLine.cpp
+	$(CXX) -c $(CPPTRAJ_FLAGS) -I$(READLINE_HOME) -o $@ ReadLine.cpp
+
+.c.o:
+	$(CC) -c $(CPPTRAJ_FLAGS) -o $@ $<
+
+.cpp.o:
+	$(CXX) -c $(CPPTRAJ_FLAGS) -o $@ $<
+
+clean:
+	/bin/rm -f $(OBJECTS) pub_fft.o cpptraj$(SFX)
+	cd readline && $(MAKE) -f Makefile_at clean
+
+uninstall:
+	/bin/rm -f $(BINDIR)/cpptraj$(SFX)
+	cd readline && $(MAKE) -f Makefile_at uninstall
+
+# Header dependencies
+include cpptrajdepend

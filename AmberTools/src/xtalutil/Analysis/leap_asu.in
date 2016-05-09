@@ -1,0 +1,6 @@
+source leaprc.ff12SB
+set default nocenter on
+x = loadpdb asu_nowat.pdb
+set x box {38.93  39.63  33.30}
+saveamberparm x asu.parm7 asu.rst7
+quit

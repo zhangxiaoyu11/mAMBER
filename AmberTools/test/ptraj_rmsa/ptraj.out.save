@@ -1,0 +1,81 @@
+
+  \-/  
+  -/-   PTRAJ: a utility for processing trajectory files
+  /-\  
+  \-/   Version: "AMBER 9.0 integrated" (April 2006)
+  -/-   Executable is: "/home/case/amber9/exe/ptraj"
+  /-\  
+  \-/   Residue labels:
+
+  Checking coordinates: eq1.x
+  Checking coordinates: eq2.x
+  Checking coordinates: eq3.x
+ ALA  ALA  PRO  ALA  ASN  ALA  VAL  THR  ALA  ASP 
+ ASP  PRO  THR  ALA  ILE  ALA  LEU  LYS  TYR  ASN 
+ GLN  ASP  ALA  THR  LYS  SER  GLU  ARG  VAL  ALA 
+ ALA  ALA  ARG  PRO  GLY  LEU  PRO  PRO  GLU  GLU 
+ GLN  HIE  CYF  ALA  ASN  CYF  GLN  PHE  MET  GLN 
+ ALA  ASN  VAL  GLY  GLU  GLY  ASP  TRP  LYS  GLY 
+ CYF  GLN  LEU  PHE  PRO  GLY  LYS  LEU  ILE  ASN 
+ VAL  ASN  GLY  TRP  CYF  ALA  SER  TRP  THR  LEU 
+ LYS  ALA  GLY  FS4  WAT  WAT  WAT  WAT  WAT  WAT 
+ WAT  WAT  WAT  WAT  WAT  WAT  WAT  WAT  WAT  WAT 
+ ...
+ WAT  WAT 
+
+ Setting box to be an exact truncated octahedron, angle is 109.471221
+
+PTRAJ: Processing input from file ptraj.in
+
+PTRAJ: trajin eq1.x
+
+PTRAJ: trajin eq2.x
+
+PTRAJ: trajin eq3.x
+
+PTRAJ: reference eq0.x
+
+Processing AMBER restart file eq0.x
+
+PTRAJ: strip :WAT
+Mask [:WAT] represents 13944 atoms
+
+PTRAJ: rms reference out rms.dat :1-84@C,N,CA
+Mask [:1-84@C,N,CA] represents 249 atoms
+[No output trajectory specified (trajout)]
+
+PTRAJ: Successfully read the input file.
+       Coordinate processing will occur on 3 frames.
+       Summary of I/O and actions follows:
+
+INPUT COORDINATE FILES
+  File (eq1.x) is an AMBER restart file with box and velocity information
+  File (eq2.x) is an AMBER restart file with box and velocity information
+  File (eq3.x) is an AMBER restart file with box and velocity information
+
+NO OUTPUT COORDINATE FILE WAS SPECIFIED
+
+REFERENCE FILE
+  File (eq0.x) is an AMBER restart file with box information
+
+ACTIONS
+  1>  STRIP: 13944 atoms will be removed from trajectory: :85-4732
+  7>  RMS to reference structure (eq0.x) using no mass weighting
+      Dumping RMSd vs. time (with time interval 1.00) to a file named rms.dat
+      Atom selection follows :1-83@N,CA,C
+
+
+Processing AMBER restart file eq1.x
+
+Set      1 .
+Processing AMBER restart file eq2.x
+
+Set      1 .
+Processing AMBER restart file eq3.x
+
+Set      1 .
+
+PTRAJ: Successfully read in 3 sets and processed 3 sets.
+       Dumping accumulated results (if any)
+
+PTRAJ RMS: dumping RMSd vs time data

@@ -1,0 +1,6 @@
+trajin tgtmd.trj 1 10
+reference pep3ref.crd
+rms reference mass out rms_fit.dat @CA,C,O,N,H,HA
+rms reference mass out rms_nofit.dat :3 nofit
+2drms out rms2d.ps ps mass :*
+go

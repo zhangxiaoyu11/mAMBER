@@ -1,0 +1,46 @@
+#!/bin/csh -f
+
+if( ! $?TESTsander ) set TESTsander = "../../bin/pbsa"
+
+if( ! $?DO_VALGRIND ) then
+   setenv DO_VALGRIND " "
+endif
+#   offx=0.25, offy=0.25, offz=0.25
+foreach xp (0.5)
+foreach cop ( 5)
+cat > mdin <<EOF
+ test of PB reaction field on protein g solvated in a sphere
+ &cntrl 
+   ntx=1, imin=1, ipb=$cop, inp=0
+ /
+ &pb
+   npbverb=1, epsout=80.0, epsin=1.0, radiopt=0, space=$xp,
+   accept=1e-5, fillratio=4.0, nfocus = 1, dprob=1.4, smoothopt=1,
+   bcopt=6, eneopt=1, arcres=0.0625
+ /
+EOF
+set all = "Li Cl MG Ca"# tp3 ile leu val phe trp hid hie nhe tyr ser thr cys cyx met 
+#set all = "met "#lyn ash glh asn gln nma alabk glybk probk da dc dg dt ru arg asp" # cym glu hip lys dap da3p da5p danp rap ra3p ra5p ranp"
+#set all = "  1a23_0.p22" # 1a93_B.p22 1aj3_0.p22 1aml_0.p22 1ao8_0.p22 "
+# set all = "1aje_0.p22"
+ #set all = " 1chl_0.p22 "1ce4_A.p22 1ica_0.p22 1erc_0.p22 1bbg_0.p22 1svf_B.p22 1bgk_0.p22 1lyp_0.p22 1eci_A.p22 1bds_0.p22 1dfe_A.p22 1cf4_B.p22 1co4_A.p22 1cw5_A.p22 1olg_A.p22 1dv0_A.p22 1cwx_A.p22 1d6g_A.p22 1e01_A.p22"
+ #set all = " 1bh4_0.p22"#1chl_0.p22 1ce4_A.p22 1ica_0.p22 1erc_0.p22 1bbg_0.p22 1svf_B.p22 1bgk_0.p22 1lyp_0.p22 1eci_A.p22 1bds_0.p22 1dfe_A.p22 1cf4_B.p22 1co4_A.p22 1cw5_A.p22 1olg_A.p22 1dv0_A.p22 1cwx_A.p22 1d6g_A.p22 1e01_A.p22"
+ foreach aa ($all)
+ set output = $aa.out
+
+   #echo $DO_VALGRIND $TESTsander -O -i mdin -p ./prmtop-inpcrd/$aa.prmtop -c ./prmtop-inpcrd/$aa.inpcrd  -o $output
+   $DO_VALGRIND $TESTsander -O -i mdin -p ./prmtop-inpcrd/$aa.prmtop -c ./prmtop-inpcrd/$aa.inpcrd  -o $output < /dev/null || goto error
+   #$DO_VALGRIND $TESTsander -O -i mdin -p ./proteintest/$aa.parm -c ./proteintest/$aa.mincrd  -o $output < /dev/null || goto error
+   ../dacdif -r 1.e-6 save/$aa.out.save $output
+   /bin/rm -f restrt mdinfo mdcrd #$aa.out
+   goto next
+
+   error:
+   echo "  ${0}:  Program error"
+   exit(1)
+  
+   next:
+end
+end
+end
+/bin/rm -f mdin

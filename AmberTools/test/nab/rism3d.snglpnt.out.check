@@ -1,0 +1,160 @@
+Reading parm file (ala.parm7)
+title:
+ACE                                                                             
+	mm_options:  cut=1.000000e+19
+	mm_options:  rism=1
+	mm_options:  ntpr_rism=1
+	mm_options:  xvvfile=../rism1d/spc-kh/spc.xvv.save
+	mm_options:  quvfile=quv
+	mm_options:  volfmt=xyzv
+	mm_options:  closure=kh
+	mm_options:  closureOrder=1
+	mm_options:  buffer=-1
+	mm_options:  solvcut=12
+	mm_options:  grdspcx=0.5
+	mm_options:  grdspcy=0.5
+	mm_options:  grdspcz=0.5
+	mm_options:  solvboxx=32
+	mm_options:  solvboxy=32
+	mm_options:  solvboxz=32
+	mm_options:  ngx=64
+	mm_options:  ngy=64
+	mm_options:  ngz=64
+	mm_options:  tolerance=1e-06
+	mm_options:  mdiis_del=0.7
+	mm_options:  mdiis_restart=10
+	mm_options:  mdiis_nvec=5
+	mm_options:  mdiis_method=2
+	mm_options:  maxstep=10000
+	mm_options:  npropagate=5
+	mm_options:  centering=1
+	mm_options:  zerofrc=1
+	mm_options:  apply_rism_force=0
+	mm_options:  polarDecomp=1
+	mm_options:  ntwrism=1
+	mm_options:  verbose=0
+	mm_options:  progress=0
+	mm_options:  asympCorr=1
+	mm_options:  saveprogress=0
+|3D-RISM thermodynamic data key
+|solute_epot     [kcal/mol]            Total               LJ          Coulomb             Bond            Angle         Dihedral           H-Bond            LJ-14       Coulomb-14       Restraints          3D-RISM
+|rism_exchem     [kcal/mol]            Total         ExChem_O        ExChem_H1
+|rism_exchGF     [kcal/mol]            Total      ExChem_GF_O     ExChem_GF_H1
+|rism_potUV      [kcal/mol]            Total   UV_potential_O  UV_potential_H1
+|rism_polar      [kcal/mol]            Total          polar_O         polar_H1
+|rism_apolar     [kcal/mol]            Total         apolar_O        apolar_H1
+|rism_polGF      [kcal/mol]            Total        polarGF_O       polarGF_H1
+|rism_apolGF     [kcal/mol]            Total       apolarGF_O      apolarGF_H1
+|rism_pol_potuv  [kcal/mol]            Total   polar_UV_pot_O  polar_UV_pot_H1
+|rism_apol_potuv [kcal/mol]            Total  apolar_UV_pot_O apolar_UV_pot_H1
+|rism_volume     [A^ 3]                  PMV
+|rism_exNumb     [#]                                  ExNum_O         ExNum_H1
+|rism_exChrg     [e]                   Total          ExChg_O         ExChg_H1
+
+Processing NetCDF trajectory: ala.nc
+
+Frame: 1 of 3
+solute_epot     -6.98780067E-002  2.74545449E+000 -8.23878464E+001  1.93624717E-002  3.62585831E-001  7.49170284E+000  0.00000000E+000  5.00422970E+000  5.02063876E+001  0.00000000E+000  1.64882454E+001
+rism_exchem      1.64882454E+001  3.16571789E+001 -1.51689334E+001
+rism_exchGF      6.32012802E+000  2.72451984E+001 -2.09250704E+001
+rism_potUV      -2.20545831E+001  6.51320170E+000 -2.85677848E+001
+rism_polar      -1.47850629E+001 -1.09412961E+001 -3.84376679E+000
+rism_apolar      3.12733083E+001  4.25984749E+001 -1.13251666E+001
+rism_polGF      -1.50386475E+001 -1.08716396E+001 -4.16700791E+000
+rism_apolGF      2.13587755E+001  3.81168380E+001 -1.67580625E+001
+rism_pol_potUV  -1.41843081E+001  1.31601325E+001 -2.73444406E+001
+rism_apol_potUV -7.87027496E+000 -6.64693080E+000 -1.22334416E+000
+rism_volume      1.93595980E+002
+rism_exNumb                      -6.38184156E+000 -1.27637588E+001
+rism_exChrg     -3.20564885E-005  5.40924891E+000 -5.40928096E+000
+
+Frame: 2 of 3
+solute_epot     -3.41386471E-001  2.56854615E+000 -8.23476129E+001  3.38717466E-002  3.59735615E-001  7.49048012E+000  0.00000000E+000  4.97044290E+000  5.01391318E+001  0.00000000E+000  1.64440181E+001
+rism_exchem      1.64440181E+001  3.16384318E+001 -1.51944137E+001
+rism_exchGF      6.27670311E+000  2.72269183E+001 -2.09502152E+001
+rism_potUV      -2.20894332E+001  6.50705866E+000 -2.85964918E+001
+rism_polar      -1.48191498E+001 -1.09491802E+001 -3.86996955E+000
+rism_apolar      3.12631679E+001  4.25876120E+001 -1.13244441E+001
+rism_polGF      -1.50730104E+001 -1.08793861E+001 -4.19362423E+000
+rism_apolGF      2.13497135E+001  3.81063044E+001 -1.67565909E+001
+rism_pol_potUV  -1.42170835E+001  1.31558346E+001 -2.73729181E+001
+rism_apol_potUV -7.87234968E+000 -6.64877594E+000 -1.22357374E+000
+rism_volume      1.93535503E+002
+rism_exNumb                      -6.37993321E+000 -1.27596467E+001
+rism_exChrg      9.31176795E-005  5.40763139E+000 -5.40753827E+000
+
+Frame: 3 of 3
+solute_epot     -6.77945512E-001  2.31243593E+000 -8.22812685E+001  9.08980189E-002  3.84286510E-001  7.48894041E+000  0.00000000E+000  4.91668330E+000  5.00274224E+001  0.00000000E+000  1.63826565E+001
+rism_exchem      1.63826565E+001  3.16240110E+001 -1.52413546E+001
+rism_exchGF      6.21581825E+000  2.72129332E+001 -2.09971150E+001
+rism_potUV      -2.21402893E+001  6.50488274E+000 -2.86451721E+001
+rism_polar      -1.48691741E+001 -1.09507138E+001 -3.91846034E+000
+rism_apolar      3.12518306E+001  4.25747248E+001 -1.13228942E+001
+rism_polGF      -1.51236406E+001 -1.08807627E+001 -4.24287796E+000
+rism_apolGF      2.13394589E+001  3.80936959E+001 -1.67542370E+001
+rism_pol_potUV  -1.42653684E+001  1.31559291E+001 -2.74212975E+001
+rism_apol_potUV -7.87492095E+000 -6.65104634E+000 -1.22387460E+000
+rism_volume      1.93468854E+002
+rism_exNumb                      -6.37771159E+000 -1.27552064E+001
+rism_exChrg      9.18516706E-005  5.40574835E+000 -5.40565650E+000
+
+3D-RISM processing complete.
+
+|Timing summary:
+|              Initialize       0.105
+|             Molec. Dyn.       0.000
+|             Normal Mode       0.000
+|             Conj. Grad.       0.000
+|                  Newton       0.000
+|-------------------------
+|                   Total       0.105
+
+|1st derivative timing summary:
+|             constraints       0.000
+|                   bonds       0.000
+|                  angles       0.000
+|                torsions       0.000
+|                pairlist       0.000
+|                 nonbond       0.000
+|               gen. Born       0.000
+|       Poisson Boltzmann       0.000
+|                 3D-RISM      37.578
+|                   Other       0.000
+|-------------------------
+|                   Total      37.578
+
+|3D-RISM memory allocation summary
+|Type          Maximum
+|Integer       0.00101 GB
+|Real          0.10581 GB
+|Logical       0.00000 GB
+|Character     0.00000 GB
+|------------------------
+|Total         0.10631 GB
+
+|CPU Timer summary for 3D-RISM Total        
+|  3D-RISM initialization                           0.108   (  0.29%)
+|  3D-RISM Output                                   5.916   ( 15.74%)
+|      Excess Chemical Potential                        0.096   ( 85.72%)
+|      Other                                            0.016   ( 14.28%)
+|    Thermodynamics                                   0.112   (  0.35%)
+|      Solvation box resize                             0.508   (  1.61%)
+|      Cuv propagation                                  0.028   (  0.09%)
+|          FFT                                              6.064   ( 26.00%)
+|            Overlap                                          1.964   ( 27.02%)
+|            Project                                          5.296   ( 72.87%)
+|            Other                                            0.008   (  0.11%)
+|          MDIIS Advance                                    7.268   ( 31.17%)
+|          Other                                            9.989   ( 42.83%)
+|        R1RISM                                          23.321   ( 99.97%)
+|        Other                                            0.008   (  0.03%)
+|      RXRISM                                          23.329   ( 74.16%)
+|        Lennard-Jones                                    0.300   (  3.95%)
+|        Coulomb                                          0.324   (  4.27%)
+|        Asymptotics                                      6.968   ( 91.78%)
+|      Potential                                        7.592   ( 24.14%)
+|    Solve 3D-RISM                                   31.458   ( 99.63%)
+|    Other                                            0.004   (  0.01%)
+|  3D-RISM                                         31.574   ( 83.99%)
+|3D-RISM Total                                   37.594   (100.00%)
+

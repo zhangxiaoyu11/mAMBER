@@ -1,0 +1,8 @@
+#!/bin/sh 
+
+echo "Starting with Amber12 (and AmberTools12), you should no longer run"
+echo "configure from this directory.  Go up two directories (to \$AMBERHOME)"
+echo "and run configure there."
+
+exit 1
+
